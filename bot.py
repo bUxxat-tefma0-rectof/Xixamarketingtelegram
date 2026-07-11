@@ -16,18 +16,18 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
         [InlineKeyboardButton("Ver Planos", callback_data="plans")],
         [InlineKeyboardButton("Suporte", callback_data="support")]
     ]
-    await update.message.reply_text("✅ Bot Online! Escolha:", reply_markup=InlineKeyboardMarkup(keyboard))
+    await update.message.reply_text("✅ Bot Xixa Marketing Online!", reply_markup=InlineKeyboardMarkup(keyboard))
 
 async def button(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
     await query.answer()
-    await query.edit_message_text("Funcionalidade em desenvolvimento...")
+    await query.edit_message_text("Em desenvolvimento...")
 
 def main():
     app = Application.builder().token(TOKEN).build()
     app.add_handler(CommandHandler("start", start))
     app.add_handler(CallbackQueryHandler(button))
-    logger.info("Bot iniciado!")
+    logger.info("✅ Bot iniciado com sucesso!")
     app.run_polling(drop_pending_updates=True)
 
 if __name__ == '__main__':
