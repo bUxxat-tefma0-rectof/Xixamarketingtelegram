@@ -13,15 +13,19 @@ logger = logging.getLogger(__name__)
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     keyboard = [
-        [InlineKeyboardButton("Ver Planos", callback_data="plans")],
-        [InlineKeyboardButton("Suporte", callback_data="support")]
+        [InlineKeyboardButton("📊 Ver Planos", callback_data="plans")],
+        [InlineKeyboardButton("💬 Suporte", callback_data="support")]
     ]
-    await update.message.reply_text("✅ Bot Xixa Marketing Online!", reply_markup=InlineKeyboardMarkup(keyboard))
+    await update.message.reply_text("✅ Bot Xixa Marketing Online!\nEscolha uma opção abaixo:", reply_markup=InlineKeyboardMarkup(keyboard))
 
 async def button(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
     await query.answer()
-    await query.edit_message_text("Em desenvolvimento...")
+    
+    if query.data == "plans":
+        await query.edit_message_text("📊 *Nossos Planos:*\n\nBásico R$97/mês\nPremium R$297/mês\n\nChama no Whats pra fechar!", parse_mode="Markdown")
+    elif query.data == "support":
+        await query.edit_message_text("💬 Suporte em desenvolvimento...\nEm breve você fala direto com um atendente.")
 
 def main():
     app = Application.builder().token(TOKEN).build()
