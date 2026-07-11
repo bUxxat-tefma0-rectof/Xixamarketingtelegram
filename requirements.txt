@@ -1,5 +1,2 @@
-python-telegram-bot==21.4
-openai
-mercadopago
-psycopg2-binary
-python-dotenv
+python-telegram-bot==21.3
+python-dotenv==1.0.1
