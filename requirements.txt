@@ -1,8 +1,5 @@
-cd /home/workdir/marketing_xixa_bot
-cat > requirements.txt << 'EOF'
 python-telegram-bot==20.8
 openai
 mercadopago
 psycopg2-binary
 python-dotenv
-EOF
